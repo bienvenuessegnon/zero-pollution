@@ -1,0 +1,40 @@
+{
+  "name": "Zéro Pollution Bénin",
+  "short_name": "ZéroPollution",
+  "description": "Plateforme éco-citoyenne de signalement d'anomalies de salubrité publique au Bénin",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#064e3b",
+  "theme_color": "#047857",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo_pwa.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo_pwa.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Signaler un Problème",
+      "short_name": "Signaler",
+      "description": "Prendre une photo pour signaler une insalubrité",
+      "url": "/?tab=new-report",
+      "icons": [{ "src": "/logo_pwa.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Cartographie",
+      "short_name": "Carte",
+      "description": "Voir la carte du Bénin en direct",
+      "url": "/?tab=map",
+      "icons": [{ "src": "/logo_pwa.png", "sizes": "192x192" }]
+    }
+  ]
+}

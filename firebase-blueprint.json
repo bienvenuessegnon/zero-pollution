@@ -1,0 +1,75 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with phone authentication and civic reputation points tracker.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique user ID, matching the phone number or custom identifier." },
+        "pseudonym": { "type": "string", "description": "User citizen pseudonym." },
+        "phone": { "type": "string", "description": "Cleaned phone number with 10 digits starting with 01." },
+        "role": { "type": "string", "enum": ["citoyen", "brigadier", "municipal"], "description": "System role." },
+        "email": { "type": "string", "description": "Generated or actual user email." },
+        "reputationPoints": { "type": "number", "description": "Eco-citizen reputation points index." },
+        "avatarUrl": { "type": "string", "description": "URL to the user avatar." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Registration date." }
+      },
+      "required": ["id", "pseudonym", "phone", "role"]
+    },
+    "Incident": {
+      "title": "Incident",
+      "description": "Eco-citizen public environmental alert with GPS and validation counters.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique report reference ID." },
+        "title": { "type": "string", "description": "Title of the environmental issue." },
+        "description": { "type": "string", "description": "Full description of of the anomaly." },
+        "category": { "type": "string", "description": "Assigned category (e.g. Ordures, Pollution, etc.)." },
+        "severity": { "type": "string", "description": "Urgency rating: faible, moyen, grave, critique." },
+        "status": { "type": "string", "description": "Current status." },
+        "locationName": { "type": "string", "description": "Arrondissement or sector description." },
+        "latitude": { "type": "number", "description": "GPS Latitude." },
+        "longitude": { "type": "number", "description": "GPS Longitude." },
+        "reportedByPseudonym": { "type": "string", "description": "Creator's pseudonym." },
+        "reportedByPhone": { "type": "string", "description": "Creator's verified phone number." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Submission time." },
+        "confirmations": { "type": "array", "description": "List of user IDs confirming the issue exists." },
+        "fakeReports": { "type": "array", "description": "List of user IDs signaling this is fake or spam." },
+        "commentsCount": { "type": "number", "description": "Comments counter." },
+        "photoUrl": { "type": "string", "description": "Submitted photo URL from cell phone." },
+        "resolvedImageUrl": { "type": "string", "description": "Resolution photo uploaded by officials." }
+      },
+      "required": ["id", "title", "description", "category", "severity", "status", "locationName", "latitude", "longitude", "reportedByPseudonym"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "Civic verification or official status comment on an alert.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique comment ID." },
+        "incidentId": { "type": "string", "description": "Target incident ID." },
+        "userId": { "type": "string", "description": "User ID of the commenter." },
+        "userPseudonym": { "type": "string", "description": "Pseudonym of the commenter." },
+        "userRole": { "type": "string", "description": "Role of the commenter." },
+        "text": { "type": "string", "description": "Comment text content." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Comment date." },
+        "extraPhotoUrl": { "type": "string", "description": "Optional additional photo URL." }
+      },
+      "required": ["id", "incidentId", "userId", "userPseudonym", "text", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Store verified Beninese eco-citizens."
+    },
+    "/incidents/{incidentId}": {
+      "schema": "Incident",
+      "description": "Store all eco-citizen alerts and signalements."
+    },
+    "/comments/{commentId}": {
+      "schema": "Comment",
+      "description": "Store interactions and discussion context of tickets."
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Zéro Pollution Bénin",
+  "description": "Plateforme éco-citoyenne béninoise d'alerte et de signalement d'anomalies de salubrité publique sur tout le territoire national.",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
