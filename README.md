@@ -137,3 +137,4 @@ Si vous souhaitez héberger à la fois l'application frontale ET l'API Node Expr
     *   **Start Command :** `npm run start` (Exécute notre production build `dist/server.cjs` compilée spécifiquement d’un seul bloc CJS).
 4.  Dans l'onglet **Environment Variables**, ajoutez votre clé `GEMINI_API_KEY` pour propulser le modèle d'intelligence en temps réel.
 5.  Validez le déploiement. Votre solution full-stack complète est fonctionnelle !
+# zero-pollution
